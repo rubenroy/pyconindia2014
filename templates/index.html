@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <title>Select Calendar</title>
+     
+	
+     
+</head>
+<body style="margin-left:40%;margin-top:4%">
+    <h4>Select a calendar </h4>
+    <form method="POST" action="/update">
+    {% for item in calendars %}
+    <input type="radio" name="calendar_id" value="{{ item.calendar_id }}">{{ item.summary }}</input>
+    <br/>
+    {% endfor %}
+    <input type="submit" value="Update">
+    </form>
+<form method="POST" action="/create">
+<input type="text" name="summary" placeholder="Calendar Name"></input>
+<input type="submit" value="Create">
+</body>
+    
+
+
+</html>
