@@ -1,26 +1,48 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Select Calendar</title>
-     
-	
-     
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="margin-left:40%;margin-top:4%">
-    <h4>Select a calendar </h4>
-    <form method="POST" action="/update">
-    {% for item in calendars %}
-    <input type="radio" name="calendar_id" value="{{ item.calendar_id }}">{{ item.summary }}</input>
-    <br/>
-    {% endfor %}
-    <input type="submit" value="Update">
-    </form>
-<form method="POST" action="/create">
-<input type="text" name="summary" placeholder="Calendar Name"></input>
-<input type="submit" value="Create">
+<body style="margin-top:4%;">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Select a Calendar</h3>
+        </div>
+        <div class="panel-body">
+            <form method="POST" action="/update">
+                {% for item in calendars %}
+                <div class="form-group">
+                    <label>
+                        <input type="radio" name="calendar_id" value="{{ item.calendar_id }}"/>
+                        {{ item.summary }}
+                    </label>
+                </div>
+                {% endfor %}
+                <button type="submit" value="Update" class="btn  btn-primary ">Update
+                </button>
+
+            </form>
+        </div>
+        <div class="panel-footer">
+            <div class="input-group ">
+                <form method="POST" action="/create">
+                    <input type="text" name="summary" placeholder="Calendar Name" class="form-control"/>
+                    <span class="input-group-btn">
+                        <button type="submit" value="Create" class="btn  btn-primary ">Create</button>
+                    </span>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-    
-
-
 </html>

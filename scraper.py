@@ -1,7 +1,7 @@
 import requests
 import re
 from bs4 import BeautifulSoup
-
+#Return RFC 3339 datetime with IST timezone
 def getDateTime(day,hour,minute):
 	hour_str=str(hour)
 	minute_str=str(minute)
@@ -20,9 +20,11 @@ def process_block(events,event_items,start,end):
 		details = event_item.find(class_="details")
 		title = details.find(class_="title")
 		summary = title.get_text().strip()
+		if not summary:
+			continue
 		link = title.a['href']
 		description = ""
-		if link != "":
+		if link != "" and "funnel" in link:
 			description = get_funnel(link)
 		speaker = details.find(class_="speaker").get_text().strip()
 		if speaker:
